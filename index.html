@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Página na Internet – MMHC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #f7f6f2;
+  color: #1c1c1c;
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: #0d0d0d;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 0%, rgba(201,162,39,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(201,162,39,0.15);
+  border: 1px solid rgba(201,162,39,0.35);
+  color: #c9a227;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 1.25rem;
+}
+.hero h1 {
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 span { color: #c9a227; }
+.hero p {
+  font-size: 15px;
+  color: #999;
+  max-width: 420px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+.hero-steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.hero-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+}
+.step-dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(201,162,39,0.2);
+  border: 1px solid rgba(201,162,39,0.4);
+  color: #c9a227;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── PROGRESS ── */
+.progress-strip {
+  background: #1c1c1c;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.progress-strip span { font-size: 12px; color: #888; white-space: nowrap; }
+.pbar { flex: 1; height: 3px; background: #333; border-radius: 2px; overflow: hidden; }
+.pbar-fill { height: 100%; background: #c9a227; border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+.pct-label { font-size: 12px; color: #c9a227; font-weight: 600; min-width: 32px; text-align: right; }
+
+/* ── FORM BODY ── */
+.form-body { max-width: 640px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+/* ── BLOCK ── */
+.block {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #ece9e0;
+  transition: border-color 0.2s;
+}
+.block:focus-within { border-color: #c9a227; }
+
+.block-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.5rem; }
+.block-num {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border-radius: 50%;
+  background: #0d0d0d;
+  color: #c9a227;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.block-title { font-size: 16px; font-weight: 600; color: #1c1c1c; margin-bottom: 2px; }
+.block-desc { font-size: 13px; color: #888; line-height: 1.5; }
+
+/* ── FIELDS ── */
+.field { margin-bottom: 1.1rem; }
+.field:last-child { margin-bottom: 0; }
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 6px;
+}
+.field label .req { color: #c9a227; margin-left: 2px; }
+.field input[type=text],
+.field input[type=email],
+.field input[type=tel],
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #e0ddd6;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #1c1c1c;
+  background: #faf9f7;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: #c9a227;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(201,162,39,0.12);
+}
+.field textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+.field .hint { font-size: 11.5px; color: #aaa; margin-top: 5px; line-height: 1.5; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── OPTIONS ── */
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.opt-item {
+  position: relative;
+}
+.opt-item input[type=checkbox],
+.opt-item input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+.opt-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 13px;
+  border: 1px solid #e0ddd6;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #444;
+  cursor: pointer;
+  background: #faf9f7;
+  transition: all 0.15s;
+  user-select: none;
+}
+.opt-label::before {
+  content: '';
+  width: 16px; height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #ccc;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  background: #fff;
+}
+.opt-item input[type=radio] + .opt-label::before { border-radius: 50%; }
+.opt-item input:checked + .opt-label {
+  border-color: #c9a227;
+  background: #fffbf0;
+  color: #1c1c1c;
+  font-weight: 500;
+}
+.opt-item input:checked + .opt-label::before {
+  background: #c9a227;
+  border-color: #c9a227;
+}
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: #f0ede6; margin: 1.25rem 0; }
+
+/* ── RESULT ── */
+.result-section {
+  background: #0d0d0d;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  display: none;
+}
+.result-section h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.result-section .result-sub { font-size: 13px; color: #666; margin-bottom: 1.25rem; }
+.result-box {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 1.25rem;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  color: #ccc;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.7;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #2a2a2a;
+}
+.result-actions { display: flex; gap: 10px; margin-top: 1rem; flex-wrap: wrap; }
+.btn-copy-result {
+  background: #c9a227;
+  color: #000;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.2s;
+}
+.btn-copy-result:hover { opacity: 0.88; }
+.btn-reset {
+  background: transparent;
+  color: #666;
+  border: 1px solid #333;
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.copy-ok { color: #c9a227; font-size: 13px; align-self: center; display: none; }
+
+/* ── CTA BUTTON ── */
+.cta-wrap { margin-top: 1.5rem; }
+.btn-gerar {
+  width: 100%;
+  background: #c9a227;
+  color: #000;
+  border: none;
+  padding: 15px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.2s, transform 0.1s;
+  letter-spacing: 0.01em;
+}
+.btn-gerar:hover { opacity: 0.9; }
+.btn-gerar:active { transform: scale(0.99); }
+.btn-gerar:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── CORES ── */
+.cores-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.cor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 6px;
+  border: 1.5px solid #e0ddd6;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #faf9f7;
+  transition: all 0.15s;
+  font-size: 11px;
+  color: #666;
+  text-align: center;
+  user-select: none;
+}
+.cor-item:hover { border-color: #c9a227; background: #fffbf0; }
+.cor-item.selecionada { border-color: #c9a227; background: #fffbf0; box-shadow: 0 0 0 2px rgba(201,162,39,0.25); }
+.cor-item.selecionada span { color: #1c1c1c; font-weight: 600; }
+.cor-circle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cor-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #f5f3ee;
+  border-radius: 8px;
+}
+.cor-preview-dots { display: flex; gap: 6px; align-items: center; }
+.cor-preview-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* ── FOOTER ── */
+.footer { text-align: center; padding: 2rem 1rem; font-size: 12px; color: #bbb; }
+.footer strong { color: #c9a227; }
+
+@media (max-width: 500px) {
+  .two-col { grid-template-columns: 1fr; }
+  .options-grid { grid-template-columns: 1fr; }
+  .hero-steps { gap: 1rem; }
+  .block { padding: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">MMHC · Automação & IA</div>
+  <h1>Vamos criar a sua <span>página na internet</span></h1>
+  <p>Responda as perguntas abaixo. Leva menos de 5 minutos e nos ajuda a criar algo que realmente funciona para o seu negócio.</p>
+  <div class="hero-steps">
+    <div class="hero-step"><div class="step-dot">1</div> Você preenche</div>
+    <div class="hero-step"><div class="step-dot">2</div> Copia e envia para nós</div>
+    <div class="hero-step"><div class="step-dot">3</div> Criamos sua página</div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-strip">
+  <span>Progresso</span>
+  <div class="pbar"><div class="pbar-fill" id="pbar"></div></div>
+  <span class="pct-label" id="pct">0%</span>
+</div>
+
+<!-- FORM -->
+<div class="form-body">
+
+  <!-- 1. Quem é você -->
+  <div class="block">
+    <div class="block-header">
+      <div class="block-num">1</div>
+      <div>
+        <div class="block-title">Quem é você?</div>
+        <div class="block-desc">Conte um pouco sobre o seu negócio.</div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="field">
+        <label>Seu nome completo <span class="req">*</span></label>
+        <input type="text" id="nome" placeholder="Ex: João Paulo Silva" oninput="prog()">
+      </div>
+      <div class="field">
+        <label>Nome do seu negócio <span class="req">*</span></label>
+        <input type="text" id="empresa" placeholder="Ex: JPAD Planejamento Financeiro" oninput="prog()">
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="field">
+        <label>Cidade onde atua</label>
+        <input type="text" id="cidade" placeholder="Ex: Cuiabá – MT">
+      </div>
+      <div class="field">
+        <label>WhatsApp de contato <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" placeholder="Ex: (65) 99999-0000" oninput="prog()">
+      </div>
+    </div>
+    <div class="field">
+      <label>O que você faz? (em 1 frase simples) <span class="req">*</span></label>
+      <input type="text" id="oquefaz" placeholder="Ex: Ajudo famílias de Cuiabá a protegerem seu futuro com seguros de vida personalizados." oninput="prog()">
+      <div class="hint">Imagine que você está explicando para um amigo. Sem termos técnicos.</div>
+    </div>
+  </div>
+
+  <!-- 2. Para quem -->
+  <div class="block">
+    <div class="block-header">
+      <div class="block-num">2</div>
+      <div>
+        <div class="block-title">Para quem é o seu serviço?</div>
+        <div class="block-desc">Quanto mais específico, melhor a página vai converter.</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Quem é o seu cliente ideal? <span class="req">*</span></label>
+      <input type="text" id="cliente" placeholder="Ex: Médicos, dentistas e empresários entre 35 e 55 anos" oninput="prog()">
+    </div>
+    <div class="field">
+      <label>Qual é a maior preocupação ou medo do seu cliente?</label>
+      <textarea id="dor" placeholder="Ex: Medo de faltar dinheiro para a família se algo acontecer. Não sabe como proteger o patrimônio que construiu."></textarea>
+      <div class="hint">Isso vai virar o título principal da sua página — seja honesto!</div>
+    </div>
+    <div class="field">
+      <label>O que você resolve para ele?</label>
+      <textarea id="resolve" placeholder="Ex: Ajudo a montar um plano de proteção financeira personalizado, explicando tudo de forma simples e transparente."></textarea>
+    </div>
+  </div>
+
+  <!-- 3. Seus diferenciais -->
+  <div class="block">
+    <div class="block-header">
+      <div class="block-num">3</div>
+      <div>
+        <div class="block-title">Por que escolher você?</div>
+        <div class="block-desc">O que te diferencia dos outros no mercado.</div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="field">
+        <label>Anos de experiência</label>
+        <input type="text" id="anos" placeholder="Ex: 12 anos">
+      </div>
+      <div class="field">
+        <label>Quantos clientes já atendeu?</label>
+        <input type="text" id="numclientes" placeholder="Ex: mais de 150 clientes">
+      </div>
+    </div>
+    <div class="field">
+      <label>Cite seus 3 maiores diferenciais</label>
+      <textarea id="diferenciais" placeholder="1. Atendimento 100% personalizado&#10;2. Consultoria gratuita antes de fechar&#10;3. Mais de 100 clientes fidelizados, incluindo médicos e advogados"></textarea>
+    </div>
+    <div class="field">
+      <label>Tem histórias de sucesso ou depoimentos de clientes?</label>
+      <textarea id="depoimentos" placeholder="Ex: Sim! O Dr. Carlos disse: 'O João Paulo me ajudou a proteger minha família de um jeito que eu não imaginava ser possível.'&#10;&#10;Ou: Ainda não tenho, pode deixar o espaço para eu preencher depois."></textarea>
+    </div>
+  </div>
+
+  <!-- 4. Objetivo da página -->
+  <div class="block">
+    <div class="block-header">
+      <div class="block-num">4</div>
+      <div>
+        <div class="block-title">O que você quer que a página faça?</div>
+        <div class="block-desc">Marque tudo que faz sentido para o seu negócio.</div>
+      </div>
+    </div>
+    <div class="options-grid">
+      <div class="opt-item"><input type="checkbox" id="o1" class="obj" value="Receber mensagens pelo WhatsApp"><label class="opt-label" for="o1">Receber mensagens pelo WhatsApp</label></div>
+      <div class="opt-item"><input type="checkbox" id="o2" class="obj" value="Agendar reuniões ou consultas"><label class="opt-label" for="o2">Agendar reuniões ou consultas</label></div>
+      <div class="opt-item"><input type="checkbox" id="o3" class="obj" value="Coletar nome e contato de interessados"><label class="opt-label" for="o3">Coletar contato de interessados</label></div>
+      <div class="opt-item"><input type="checkbox" id="o4" class="obj" value="Apresentar meus serviços"><label class="opt-label" for="o4">Apresentar meus serviços</label></div>
+      <div class="opt-item"><input type="checkbox" id="o5" class="obj" value="Aparecer no Google quando pesquisarem meu nome"><label class="opt-label" for="o5">Aparecer no Google</label></div>
+      <div class="opt-item"><input type="checkbox" id="o6" class="obj" value="Transmitir credibilidade e profissionalismo"><label class="opt-label" for="o6">Transmitir credibilidade</label></div>
+    </div>
+    <div class="divider"></div>
+    <div class="field">
+      <label>Qual frase você quer que o botão principal diga?</label>
+      <input type="text" id="cta" placeholder="Ex: Quero uma consulta gratuita  /  Fale comigo agora  /  Solicitar simulação">
+      <div class="hint">Esse botão vai aparecer em destaque na página.</div>
+    </div>
+  </div>
+
+  <!-- 5. Visual e Cores -->
+  <div class="block">
+    <div class="block-header">
+      <div class="block-num">5</div>
+      <div>
+        <div class="block-title">Visual e identidade da página</div>
+        <div class="block-desc">Vamos definir o estilo, as cores e a marca da sua página.</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Tem logo? <span class="req">*</span></label>
+      <div class="options-grid" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="opt-item"><input type="radio" name="logo" id="l1" value="Sim, tenho logo pronta"><label class="opt-label" for="l1">Sim, tenho</label></div>
+        <div class="opt-item"><input type="radio" name="logo" id="l2" value="Não tenho logo ainda"><label class="opt-label" for="l2">Não tenho</label></div>
+        <div class="opt-item"><input type="radio" name="logo" id="l3" value="Tenho, mas quero redesenhar"><label class="opt-label" for="l3">Quero refazer</label></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="field">
+      <label>Escolha as cores que combinam com o seu negócio</label>
+      <div class="hint" style="margin-bottom:10px;">Clique nas cores que você gosta. Pode escolher até 3.</div>
+      <div class="cores-grid" id="cores-grid">
+        <div class="cor-item" data-cor="Azul marinho (#003366)" data-hex="#003366"><div class="cor-circle" style="background:#003366;"></div><span>Azul marinho</span></div>
+        <div class="cor-item" data-cor="Azul royal (#1a56db)" data-hex="#1a56db"><div class="cor-circle" style="background:#1a56db;"></div><span>Azul royal</span></div>
+        <div class="cor-item" data-cor="Dourado (#c9a227)" data-hex="#c9a227"><div class="cor-circle" style="background:#c9a227;"></div><span>Dourado</span></div>
+        <div class="cor-item" data-cor="Verde escuro (#1a4731)" data-hex="#1a4731"><div class="cor-circle" style="background:#1a4731;"></div><span>Verde escuro</span></div>
+        <div class="cor-item" data-cor="Verde esmeralda (#059669)" data-hex="#059669"><div class="cor-circle" style="background:#059669;"></div><span>Verde esmeralda</span></div>
+        <div class="cor-item" data-cor="Preto (#0d0d0d)" data-hex="#0d0d0d"><div class="cor-circle" style="background:#0d0d0d; border:1px solid #ccc;"></div><span>Preto</span></div>
+        <div class="cor-item" data-cor="Cinza grafite (#374151)" data-hex="#374151"><div class="cor-circle" style="background:#374151;"></div><span>Grafite</span></div>
+        <div class="cor-item" data-cor="Vinho (#7f1d1d)" data-hex="#7f1d1d"><div class="cor-circle" style="background:#7f1d1d;"></div><span>Vinho</span></div>
+        <div class="cor-item" data-cor="Terracota (#c2410c)" data-hex="#c2410c"><div class="cor-circle" style="background:#c2410c;"></div><span>Terracota</span></div>
+        <div class="cor-item" data-cor="Roxo (#5b21b6)" data-hex="#5b21b6"><div class="cor-circle" style="background:#5b21b6;"></div><span>Roxo</span></div>
+        <div class="cor-item" data-cor="Branco (#ffffff)" data-hex="#ffffff"><div class="cor-circle" style="background:#fff; border:1px solid #ccc;"></div><span>Branco</span></div>
+        <div class="cor-item" data-cor="Bege / creme (#f5f0e8)" data-hex="#f5f0e8"><div class="cor-circle" style="background:#f5f0e8; border:1px solid #ccc;"></div><span>Bege / creme</span></div>
+      </div>
+      <input type="hidden" id="cores-selecionadas">
+      <div class="cor-preview" id="cor-preview" style="display:none;">
+        <span style="font-size:12px;color:#888;">Cores selecionadas:</span>
+        <div class="cor-preview-dots" id="cor-preview-dots"></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Tem alguma cor específica que não está na lista? (opcional)</label>
+      <input type="text" id="cores-extra" placeholder="Ex: azul petróleo, laranja queimado, rosa antigo...">
+    </div>
+    <div class="divider"></div>
+    <div class="two-col">
+      <div class="field">
+        <label>Como você quer parecer?</label>
+        <select id="tom">
+          <option value="">Escolha...</option>
+          <option>Formal e institucional</option>
+          <option>Próximo e de confiança</option>
+          <option>Moderno e inovador</option>
+          <option>Sério e técnico</option>
+          <option>Combinação de formal + próximo</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Site que você admira ou quer se parecer</label>
+        <input type="text" id="referencia" placeholder="Ex: alexandresantiago.com.br">
+      </div>
+    </div>
+    <div class="field">
+      <label>Tem alguma regra de marca para seguir? (franquia, empresa parceira, etc.)</label>
+      <textarea id="restricoes" placeholder="Ex: Sim — preciso usar a marca Prudential junto com a minha. As cores devem respeitar o padrão deles.&#10;&#10;Ou: Não tenho restrições." style="min-height:70px;"></textarea>
+    </div>
+  </div>
+
+  <!-- 6. Fotos -->
+  <div class="block">
+    <div class="block-header">
+      <div class="block-num">6</div>
+      <div>
+        <div class="block-title">Fotos para a página</div>
+        <div class="block-desc">Páginas com foto real do profissional convertem muito mais. Quanto mais humanizada, melhor!</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Quer usar foto sua na página?</label>
+      <div class="options-grid" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="opt-item"><input type="radio" name="foto_pessoal" id="fp1" value="Sim, tenho fotos profissionais"><label class="opt-label" for="fp1">Sim, tenho fotos</label></div>
+        <div class="opt-item"><input type="radio" name="foto_pessoal" id="fp2" value="Sim, mas preciso tirar fotos novas"><label class="opt-label" for="fp2">Preciso tirar fotos</label></div>
+        <div class="opt-item"><input type="radio" name="foto_pessoal" id="fp3" value="Não quero usar foto minha"><label class="opt-label" for="fp3">Prefiro sem foto</label></div>
+      </div>
+      <div class="hint">Se tiver fotos, envie junto com este formulário pelo WhatsApp ou e-mail.</div>
+    </div>
+    <div class="field">
+      <label>Quer usar fotos do seu local de trabalho?</label>
+      <div class="options-grid" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="opt-item"><input type="radio" name="foto_local" id="fl1" value="Sim, tenho fotos do escritório/consultório"><label class="opt-label" for="fl1">Sim, tenho fotos</label></div>
+        <div class="opt-item"><input type="radio" name="foto_local" id="fl2" value="Sim, mas preciso tirar fotos do local"><label class="opt-label" for="fl2">Preciso tirar fotos</label></div>
+        <div class="opt-item"><input type="radio" name="foto_local" id="fl3" value="Trabalho de forma remota / sem escritório fixo"><label class="opt-label" for="fl3">Trabalho remoto</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Tem outros materiais visuais para enviar?</label>
+      <div class="options-grid">
+        <div class="opt-item"><input type="checkbox" id="m1" class="mat" value="Certificados ou diplomas"><label class="opt-label" for="m1">Certificados / diplomas</label></div>
+        <div class="opt-item"><input type="checkbox" id="m2" class="mat" value="Fotos com clientes (com autorização)"><label class="opt-label" for="m2">Fotos com clientes</label></div>
+        <div class="opt-item"><input type="checkbox" id="m3" class="mat" value="Prêmios ou reconhecimentos"><label class="opt-label" for="m3">Prêmios / reconhecimentos</label></div>
+        <div class="opt-item"><input type="checkbox" id="m4" class="mat" value="Logo da empresa parceira ou franqueadora"><label class="opt-label" for="m4">Logo da empresa parceira</label></div>
+        <div class="opt-item"><input type="checkbox" id="m5" class="mat" value="Vídeo de apresentação"><label class="opt-label" for="m5">Vídeo de apresentação</label></div>
+        <div class="opt-item"><input type="checkbox" id="m6" class="mat" value="Não tenho nenhum material ainda"><label class="opt-label" for="m6">Nenhum material ainda</label></div>
+      </div>
+      <div class="hint">Envie todos os materiais junto com o formulário. Usaremos o que fizer mais sentido para a página.</div>
+    </div>
+  </div>
+
+  <!-- 7. Extras -->
+  <div class="block">
+    <div class="block-header">
+      <div class="block-num">7</div>
+      <div>
+        <div class="block-title">O que mais você gostaria na página?</div>
+        <div class="block-desc">Itens opcionais que tornam a página ainda mais eficiente.</div>
+      </div>
+    </div>
+    <div class="options-grid">
+      <div class="opt-item"><input type="checkbox" id="e1" class="ext" value="Botão flutuante do WhatsApp"><label class="opt-label" for="e1">Botão flutuante WhatsApp</label></div>
+      <div class="opt-item"><input type="checkbox" id="e2" class="ext" value="Formulário para deixar nome e contato"><label class="opt-label" for="e2">Formulário de contato</label></div>
+      <div class="opt-item"><input type="checkbox" id="e3" class="ext" value="Link para o Instagram"><label class="opt-label" for="e3">Link para o Instagram</label></div>
+      <div class="opt-item"><input type="checkbox" id="e4" class="ext" value="Depoimentos de clientes em destaque"><label class="opt-label" for="e4">Depoimentos de clientes</label></div>
+      <div class="opt-item"><input type="checkbox" id="e5" class="ext" value="Integração com anúncios (Facebook/Instagram Ads)"><label class="opt-label" for="e5">Integração com anúncios</label></div>
+      <div class="opt-item"><input type="checkbox" id="e6" class="ext" value="Agendamento online"><label class="opt-label" for="e6">Agendamento online</label></div>
+      <div class="opt-item"><input type="checkbox" id="e7" class="ext" value="Automação de resposta no WhatsApp"><label class="opt-label" for="e7">Resposta automática WhatsApp</label></div>
+      <div class="opt-item"><input type="checkbox" id="e8" class="ext" value="Aparecimento no Google (SEO)"><label class="opt-label" for="e8">Aparecer no Google (SEO)</label></div>
+    </div>
+
+    <div class="field">
+      <label>Domínio desejado (o endereço da sua página)</label>
+      <input type="text" id="dominio" placeholder="Ex: www.joaopaulo.com.br — ou ainda não sei">
+    </div>
+    <div class="field">
+      <label>Alguma observação ou detalhe importante?</label>
+      <textarea id="obs" placeholder="Conta tudo que achar relevante! Fotos disponíveis, materiais prontos, preferências, dúvidas..." style="min-height:70px;"></textarea>
+    </div>
+  </div>
+
+  <!-- GERAR -->
+  <div class="cta-wrap">
+    <button class="btn-gerar" onclick="gerar()">Gerar meu resumo e copiar para enviar →</button>
+  </div>
+
+  <!-- RESULTADO -->
+  <div class="result-section" id="resultado">
+    <h3>Pronto! Seu resumo está aqui.</h3>
+    <div class="result-sub">Copie o texto abaixo e envie para a MMHC pelo WhatsApp ou e-mail.</div>
+    <div class="result-box" id="result-text"></div>
+    <div class="result-actions">
+      <button class="btn-copy-result" onclick="copiar()">Copiar tudo</button>
+      <button class="btn-reset" onclick="resetar()">Preencher de novo</button>
+      <span class="copy-ok" id="copy-ok">Copiado!</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Formulário gerado por <strong>MMHC Automação & IA</strong> · Todos os dados ficam apenas no seu dispositivo.
+</div>
+
+<script>
+function prog() {
+  const obrig = ['nome','empresa','whatsapp','oquefaz','cliente'];
+  const total = obrig.length;
+  const ok = obrig.filter(id => (document.getElementById(id)||{}).value?.trim()).length;
+  const pct = Math.round((ok/total)*100);
+  document.getElementById('pbar').style.width = pct+'%';
+  document.getElementById('pct').textContent = pct+'%';
+}
+
+function checks(cls) {
+  const sel = [...document.querySelectorAll('.'+cls+':checked')].map(c=>c.value);
+  return sel.length ? sel.join(', ') : '(nenhum selecionado)';
+}
+
+function radio(name) {
+  const el = document.querySelector('input[name='+name+']:checked');
+  return el ? el.value : '—';
+}
+
+function v(id) {
+  return (document.getElementById(id)||{}).value?.trim() || '—';
+}
+
+function gerar() {
+  const obrig = ['nome','empresa','whatsapp','oquefaz','cliente'];
+  const faltando = obrig.filter(id => !document.getElementById(id).value.trim());
+  if (faltando.length) {
+    alert('Por favor, preencha os campos obrigatórios (marcados com *) antes de continuar.');
+    return;
+  }
+
+  const txt = `══════════════════════════════════════════
+BRIEFING DE LANDING PAGE
+Enviado para: MMHC Automação & IA
+══════════════════════════════════════════
+
+👤 SOBRE O NEGÓCIO
+Nome: ${v('nome')}
+Empresa: ${v('empresa')}
+Cidade: ${v('cidade')}
+WhatsApp: ${v('whatsapp')}
+O que faz: ${v('oquefaz')}
+
+🎯 PÚBLICO E PROPOSTA
+Cliente ideal: ${v('cliente')}
+Maior dor do cliente: ${v('dor')}
+O que resolve: ${v('resolve')}
+
+⭐ DIFERENCIAIS
+Experiência: ${v('anos')}
+Clientes atendidos: ${v('numclientes')}
+Diferenciais: 
+${v('diferenciais')}
+Depoimentos: 
+${v('depoimentos')}
+
+📸 FOTOS E MATERIAIS
+Foto pessoal: ${radio('foto_pessoal')}
+Foto do local: ${radio('foto_local')}
+Materiais disponíveis: ${checks('mat')}
+
+🎨 VISUAL E MARCA
+Cores escolhidas: ${v('cores-selecionadas') !== '—' ? v('cores-selecionadas') : '(nenhuma selecionada)'}
+Cores adicionais: ${v('cores-extra')}
+
+📄 OBJETIVO DA PÁGINA
+${checks('obj')}
+Botão principal (CTA): ${v('cta')}
+
+🎨 VISUAL E MARCA
+Logo: ${radio('logo')}
+Estilo: ${v('tom')}
+Referência: ${v('referencia')}
+Restrições de marca: ${v('restricoes')}
+
+➕ EXTRAS DESEJADOS
+${checks('ext')}
+
+⏱ PRAZO E ENTREGA
+Domínio: ${v('dominio')}
+Observações: ${v('obs')}
+
+══════════════════════════════════════════
+Gerado em: ${new Date().toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}
+`;
+
+  document.getElementById('result-text').textContent = txt;
+  document.getElementById('resultado').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('resultado').scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
+}
+
+function copiar() {
+  const txt = document.getElementById('result-text').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const el = document.getElementById('copy-ok');
+    el.style.display = 'inline';
+    setTimeout(() => el.style.display='none', 2500);
+  });
+}
+
+function initCores() {
+  const items = document.querySelectorAll('.cor-item');
+  let selecionadas = [];
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const cor = item.dataset.cor;
+      const hex = item.dataset.hex;
+      if (item.classList.contains('selecionada')) {
+        item.classList.remove('selecionada');
+        selecionadas = selecionadas.filter(c => c !== cor);
+      } else {
+        if (selecionadas.length >= 3) {
+          alert('Escolha no máximo 3 cores!');
+          return;
+        }
+        item.classList.add('selecionada');
+        selecionadas.push(cor);
+      }
+      document.getElementById('cores-selecionadas').value = selecionadas.join(' + ');
+      const preview = document.getElementById('cor-preview');
+      const dots = document.getElementById('cor-preview-dots');
+      if (selecionadas.length > 0) {
+        preview.style.display = 'flex';
+        dots.innerHTML = [...document.querySelectorAll('.cor-item.selecionada')]
+          .map(el => `<div class="cor-preview-dot" style="background:${el.dataset.hex};" title="${el.dataset.cor}"></div>`)
+          .join('');
+      } else {
+        preview.style.display = 'none';
+      }
+    });
+  });
+}
+initCores();
+
+function resetar() {
+  if (!confirm('Limpar tudo e começar de novo?')) return;
+  document.querySelectorAll('input[type=text],input[type=tel],input[type=email],textarea,select').forEach(el=>el.value='');
+  document.querySelectorAll('input[type=checkbox],input[type=radio]').forEach(el=>el.checked=false);
+  document.getElementById('resultado').style.display='none';
+  prog();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
