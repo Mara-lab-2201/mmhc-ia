@@ -1,2 +1,2 @@
 [build]
-  edge_functions = "netlify/edge-functions"
+  functions = "netlify/functions"
