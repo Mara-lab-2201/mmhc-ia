@@ -716,8 +716,7 @@ function addUser(t){
   box.appendChild(d);box.scrollTop=box.scrollHeight;
 }
 function saveLead(l){
-  const body=new URLSearchParams({'form-name':'leads-maya',nome:l.nome||'',email:l.email||'',whatsapp:l.whatsapp||''}).toString();
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).catch(()=>{});
+  fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:l.nome||'',email:l.email||'',whatsapp:l.whatsapp||''})}).catch(()=>{});
 }
 function addBot(text){
   const leadM=text.match(/\[LEAD\]([\s\S]*?)\[\/LEAD\]/);
@@ -910,8 +909,5 @@ calcROI();
 </div>
 
 
-<form name="leads-maya" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="text" name="nome" /><input type="email" name="email" /><input type="text" name="whatsapp" /><input type="text" name="bot-field" />
-</form>
 </body>
 </html>
