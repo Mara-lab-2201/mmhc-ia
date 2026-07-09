@@ -451,19 +451,7 @@ footer .footer-links a:hover{color:#E8C97A}
     <div class="serv-grid reveal">
       <div class="serv-card">
         <div class="serv-num">01</div>
-        <h3 class="serv-title">Agente de Voz no WhatsApp</h3>
-        <p class="serv-desc">O seu escritório atende clientes por áudio, com voz humanizada, 24 horas por dia, 7 dias por semana. Nenhum cliente sem resposta.</p>
-        <ul class="serv-features">
-          <li>Responde dúvidas por mensagem de voz</li>
-          <li>Tom natural e profissional</li>
-          <li>Disponível fora do horário comercial</li>
-          <li>Triagem automática por área jurídica</li>
-        </ul>
-        <button class="serv-action" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">Saber mais →</button>
-      </div>
-      <div class="serv-card">
-        <div class="serv-num">02</div>
-        <h3 class="serv-title">Webpage + Agente de Texto</h3>
+        <h3 class="serv-title">Landing Page + Agente de Texto</h3>
         <p class="serv-desc">Site profissional para o seu escritório com agente de IA integrado que qualifica leads e agenda consultas automaticamente.</p>
         <ul class="serv-features">
           <li>Site moderno e responsivo</li>
@@ -474,7 +462,7 @@ footer .footer-links a:hover{color:#E8C97A}
         <button class="serv-action" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">Saber mais →</button>
       </div>
       <div class="serv-card">
-        <div class="serv-num">03</div>
+        <div class="serv-num">02</div>
         <h3 class="serv-title">Automação de Redes Sociais</h3>
         <p class="serv-desc">Captura quem interage no Instagram e Facebook e direcciona automaticamente para atendimento no WhatsApp.</p>
         <ul class="serv-features">
@@ -485,15 +473,27 @@ footer .footer-links a:hover{color:#E8C97A}
         </ul>
         <button class="serv-action" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">Saber mais →</button>
       </div>
+      <div class="serv-card">
+        <div class="serv-num">03</div>
+        <h3 class="serv-title">Agente de Voz no WhatsApp</h3>
+        <p class="serv-desc">O seu escritório atende clientes por áudio, com voz humanizada, 24 horas por dia, 7 dias por semana. Nenhum cliente sem resposta.</p>
+        <ul class="serv-features">
+          <li>Responde dúvidas por mensagem de voz</li>
+          <li>Tom natural e profissional</li>
+          <li>Disponível fora do horário comercial</li>
+          <li>Triagem automática por área jurídica</li>
+        </ul>
+        <button class="serv-action" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">Saber mais →</button>
+      </div>
       <div class="serv-card featured">
         <div class="serv-num">04</div>
         <span class="serv-badge">Melhor valor</span>
         <h3 class="serv-title">Pacote Completo</h3>
         <p class="serv-desc">Os 3 serviços integrados. Atendimento omnichannel completo para o seu escritório com condição especial.</p>
         <ul class="serv-features">
-          <li>Agente de voz no WhatsApp</li>
-          <li>Site profissional com IA</li>
+          <li>Landing page profissional com IA</li>
           <li>Automação de redes sociais</li>
+          <li>Agente de voz no WhatsApp</li>
           <li>Onboarding e suporte dedicado</li>
         </ul>
         <button class="serv-action" onclick="window.open('https://calendly.com/machscmac/30min','_blank')">Quero este pacote →</button>
@@ -672,11 +672,22 @@ function toggleFaq(btn){
 // CHAT
 const SYSTEM=`Você é Maya, assistente virtual da MMHC — empresa especializada em automação de atendimento com Inteligência Artificial para escritórios de advocacia em Portugal e no Brasil.
 
-SERVIÇOS DA MMHC:
-1. Agente de Voz no WhatsApp — atende clientes por áudio 24/7, voz humanizada, triagem por área jurídica
-2. Webpage + Agente de Texto — site profissional com IA que qualifica leads e agenda consultas
-3. Automação de Redes Sociais → WhatsApp — captura leads do Instagram/Facebook automaticamente
+SERVIÇOS DA MMHC (nesta ordem):
+1. Landing Page + Agente de Texto — página profissional do escritório com agente de IA integrado que responde 24/7, qualifica leads e agenda consultas
+2. Automação de Redes Sociais → WhatsApp — captura e qualifica quem interage no Instagram/Facebook e encaminha para o WhatsApp automaticamente
+3. Agente de Voz no WhatsApp — atende clientes por áudio 24/7, voz humanizada, triagem por área jurídica
 4. Pacote Completo — os 3 serviços integrados com condição especial
+
+CONHECIMENTO PARA RESPONDER DÚVIDAS FREQUENTES:
+- "Como a landing page ajuda o meu escritório?" → É a presença profissional do escritório aberta 24h: o cliente chega (por pesquisa, redes ou indicação), tira dúvidas na hora com o agente de IA, deixa os contactos e pode agendar consulta sozinho — o advogado recebe leads já qualificados em vez de chamadas perdidas. Este site onde estamos a conversar é um exemplo real do produto.
+- "O agente de voz precisa de um número separado?" → Recomendamos um número dedicado ao agente: assim o escritório mantém o seu número principal totalmente livre para uso normal, e o número do agente torna-se o número de atendimento oficial (site, redes, Google). A equipa acompanha as conversas pela plataforma e pode intervir quando quiser. Os detalhes práticos são definidos na implementação com a nossa especialista.
+- "A IA responde errado / posso confiar?" → O agente responde apenas dentro do que o escritório aprova, não dá conselhos jurídicos e encaminha casos complexos para o advogado.
+- "Funciona no Brasil e em Portugal?" → Sim, atendemos escritórios nos dois países.
+
+COMO LIDAR COM O QUE NÃO SABE:
+- Responda com naturalidade a qualquer pergunta relacionada com automação, IA e atendimento para escritórios, mesmo que não esteja neste guião — use bom senso e mantenha-se no tema
+- Se for um detalhe técnico ou comercial que não domina, NUNCA responda que não entendeu: diga que é uma excelente pergunta e que a nossa especialista explica ao detalhe na demonstração, oferecendo [AGENDAR]
+- Se a pergunta fugir totalmente do tema (ex.: futebol, receitas), redirecione com simpatia para o assunto do escritório
 
 O SEU OBJETIVO PRINCIPAL: qualificar o visitante e captar os dados de contacto (nome, email e WhatsApp) para a nossa especialista dar seguimento.
 
