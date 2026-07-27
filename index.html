@@ -790,7 +790,7 @@ function addQuick(items){
 }
 async function send(text){
   if(!text.trim())return;
-  addUser(text);hist.push({role:'user',content:text});inp.value='';
+  addUser(text);hist.push({role:'user',content:text});inp.value='';track('falou_com_maya');
   addTyping();
   try{
     const r=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM,messages:hist})});
@@ -849,12 +849,11 @@ function calcROI() {
 }
 
 calcROI();
-
+function track(evento){ if(typeof gtag==='function'){ gtag('event', evento); } }
 </script>
 
 <!-- ROI FAB BUTTON -->
-<div class="roi-fab" onclick="document.getElementById('roiOverlay').classList.add('open')">
-  <div class="roi-fab-btn">🧮</div>
+<div class="roi-fab" onclick="document.getElementById('roiOverlay').classList.add('open');track('abriu_calculadora')">  <div class="roi-fab-btn">🧮</div>
   <div class="roi-fab-label">Calcular ROI</div>
 </div>
 
