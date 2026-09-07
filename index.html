@@ -762,7 +762,7 @@ function addUser(t){
   box.appendChild(d);box.scrollTop=box.scrollHeight;
 }
 function saveLead(l){
-  fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:l.nome||'',email:l.email||'',whatsapp:l.whatsapp||''})}).catch(()=>{});
+  fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:l.nome||'',email:l.email||'',whatsapp:l.whatsapp||'',negocio:l.negocio||'',problema:l.problema||'',impacto:l.impacto||'',solucao:l.solucao||'',servico:l.servico||'',fase:l.fase||'Só explorou'})}).catch(()=>{});
 }
 function addBot(text){
   const leadM=text.match(/\[LEAD\]([\s\S]*?)\[\/LEAD\]/);
