@@ -1,0 +1,31 @@
+# MMHC — Automação & IA para escritórios de advocacia
+
+> A MMHC cria automação e agentes de inteligência artificial para escritórios de advocacia em Portugal e no Brasil: atendimento por WhatsApp e pelo site 24 horas por dia, triagem do caso, agendamento da primeira reunião e resumo do caso para o advogado. Cada solução é desenhada a partir do processo real do escritório, não é um produto pronto.
+
+A MMHC (AGENDA IA LTDA, Cuiabá/MT, Brasil) é dirigida por Mara Alvarez Croce, engenheira de formação especializada em otimização de processos, e por João Paulo Alvarez Duarte. Atende escritórios em Portugal e no Brasil, em português europeu ou brasileiro conforme o país do cliente.
+
+## O que o agente de IA faz
+- Responde a novos contactos no mesmo minuto, no WhatsApp e no site, a qualquer hora
+- Faz perguntas de triagem para entender a área, o problema e o impacto do caso
+- Agenda o diagnóstico ou a primeira reunião e envia a confirmação por WhatsApp
+- Avisa o escritório com um resumo do caso, para o advogado chegar à reunião preparado
+- Regista cada contacto numa planilha ou CRM
+
+## Ética e proteção de dados
+- O agente não emite pareceres jurídicos nem indica preços; encaminha essas questões para o advogado
+- Pensado para respeitar as regras de publicidade e captação da OAB (Brasil) e da Ordem dos Advogados (Portugal)
+- Tratamento de dados com base no consentimento do visitante, de acordo com a LGPD (Brasil) e o RGPD (União Europeia); os dados são apagados a pedido
+- Política de privacidade: https://mmhc-ia.com/privacidade
+
+## Serviços
+- [Landing Page com Agente de Texto](https://mmhc-ia.com/landing-page-advogados): site profissional para o escritório com agente de IA integrado que qualifica e agenda
+- [Automação de Redes Sociais](https://mmhc-ia.com/automacao-redes-sociais): quem interage no Instagram ou Facebook segue para o WhatsApp do escritório
+- [Agente de Voz no WhatsApp](https://mmhc-ia.com/agente-voz-whatsapp): atendimento por áudio com voz natural
+- [Pacote Completo](https://mmhc-ia.com/pacote-completo): os três serviços integrados num só sistema de atendimento
+
+## Contacto
+- Diagnóstico gratuito de 30 minutos por Google Meet: https://cal.com/mmhc-ia/diagnostico
+- WhatsApp: +351 910 646 671
+- Email: contato@mmhc-ia.com
+- Site: https://mmhc-ia.com
+- LinkedIn: https://www.linkedin.com/company/136194116/
