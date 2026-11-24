@@ -441,6 +441,12 @@ footer .social-links a:focus-visible{outline:2px solid #E8C97A;outline-offset:2p
 .iaadv-rule span{font-size:14px;line-height:1.6;color:var(--gray)}
 .iaadv-rule a{color:var(--gold)}
 </style>
+<style>
+.serv-wide{grid-column:1/-1}
+.serv-wide-in{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.serv-wide .serv-features{margin-top:0}
+@media(max-width:900px){.serv-wide-in{grid-template-columns:1fr;gap:20px}}
+</style>
 </head>
 <body>
 
@@ -535,6 +541,22 @@ footer .social-links a:focus-visible{outline:2px solid #E8C97A;outline-offset:2p
       <p class="section-sub">Escolha o que precisa agora — ou leve tudo com o Pacote Completo.</p>
     </div>
     <div class="serv-grid reveal">
+      <div class="serv-card serv-wide">
+        <div class="serv-num">Novo</div>
+        <div class="serv-wide-in">
+          <div>
+            <h3 class="serv-title">Agente de IA no WhatsApp do Escritório</h3>
+            <p class="serv-desc">Responde a cada cliente em segundos, a qualquer hora. Percebe o caso, agenda a consulta e entrega ao advogado o resumo pronto, sem dar pareceres jurídicos. Para Portugal e Brasil.</p>
+            <button class="serv-action" onclick="location.href='/agente-ia-whatsapp-advogados'">Saber mais →</button>
+          </div>
+          <ul class="serv-features">
+            <li>Atende 24 horas no WhatsApp</li>
+            <li>Qualifica o caso por área e urgência</li>
+            <li>Agenda e avisa o advogado com o resumo</li>
+            <li>Dentro da OAB, Ordem dos Advogados, LGPD e RGPD</li>
+          </ul>
+        </div>
+      </div>
       <div class="serv-card">
         <div class="serv-num">01</div>
         <h3 class="serv-title">Landing Page + Agente de Texto</h3>

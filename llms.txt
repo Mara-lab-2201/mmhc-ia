@@ -18,6 +18,7 @@ A MMHC (AGENDA IA LTDA, Cuiabá/MT, Brasil) é dirigida por Mara Alvarez Croce, 
 - Política de privacidade: https://mmhc-ia.com/privacidade
 
 ## Serviços
+- [Agente de IA para WhatsApp de escritórios de advocacia](https://mmhc-ia.com/agente-ia-whatsapp-advogados): atende o WhatsApp do escritório 24 horas, qualifica o caso, agenda a consulta e envia o resumo ao advogado; Portugal e Brasil, sem pareceres jurídicos
 - [Landing Page com Agente de Texto](https://mmhc-ia.com/landing-page-advogados): site profissional para o escritório com agente de IA integrado que qualifica e agenda
 - [Automação de Redes Sociais](https://mmhc-ia.com/automacao-redes-sociais): quem interage no Instagram ou Facebook segue para o WhatsApp do escritório
 - [Agente de Voz no WhatsApp](https://mmhc-ia.com/agente-voz-whatsapp): atendimento por áudio com voz natural
